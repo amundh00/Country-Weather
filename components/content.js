@@ -5,14 +5,21 @@ export async function createContent() {
   const content = document.createElement('main');
   content.classList.add('content');
 
+  // Create a container div for the search bar
+  const searchBarContainer = document.createElement('div');
+  searchBarContainer.classList.add('search-bar-container');
+
   // Create the search bar
   const searchBar = document.createElement('input');
   searchBar.setAttribute('type', 'text');
   searchBar.setAttribute('id', 'country-search');
   searchBar.setAttribute('placeholder', 'Search for a country...');
-  
-  // Append the search bar to the content
-  content.appendChild(searchBar);
+
+  // Append the search bar to the search bar container
+  searchBarContainer.appendChild(searchBar);
+
+  // Append the search bar container to the content
+  content.appendChild(searchBarContainer);
 
   // Fetch and display country data
   const countries = await fetchCountries();
@@ -28,7 +35,20 @@ export async function createContent() {
     // Render the filtered list
     filteredCountries.forEach((country) => {
       const li = document.createElement('li');
-      li.textContent = country.name.common;
+
+      // Add the flag image
+      const flagImg = document.createElement('img');
+      flagImg.src = country.flags.png; // Assuming the API provides flags in the 'flags' object
+      flagImg.alt = `${country.name.common} Flag`;
+      flagImg.style.width = '30px'; // Adjust the flag size as needed
+      flagImg.style.marginRight = '10px';
+
+      // Add the country name next to the flag
+      const countryName = document.createElement('span');
+      countryName.textContent = country.name.common;
+
+      li.appendChild(flagImg); // Append the flag before the country name
+      li.appendChild(countryName);
 
       // Create a div to display weather information
       const weatherDiv = document.createElement('div');
