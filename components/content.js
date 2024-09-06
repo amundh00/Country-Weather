@@ -40,8 +40,8 @@ export async function createContent() {
       const flagImg = document.createElement('img');
       flagImg.src = country.flags.png; // Assuming the API provides flags in the 'flags' object
       flagImg.alt = `${country.name.common} Flag`;
-      flagImg.style.width = '30px'; // Adjust the flag size as needed
-      flagImg.style.marginRight = '10px';
+      flagImg.style.width = '50px'; // Adjust the flag size as needed
+      flagImg.style.margin = '10px';
 
       // Add the country name next to the flag
       const countryName = document.createElement('span');
@@ -53,7 +53,7 @@ export async function createContent() {
       // Create a div to display weather information
       const weatherDiv = document.createElement('div');
       weatherDiv.classList.add('weather-info');
-      weatherDiv.textContent = 'Click to see the weather';
+      weatherDiv.textContent = '"Click to see the weather"';
       li.appendChild(weatherDiv);
 
       // Event listener to fetch weather when country is clicked

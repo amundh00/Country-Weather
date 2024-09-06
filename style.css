@@ -25,6 +25,10 @@ ul {
 }
 
 li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: #f9f9f9;
   padding: 1rem;
   margin: 0.5rem 0;
@@ -33,6 +37,13 @@ li {
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
+li > span{
+  text-decoration: underline;
+  font-size: large;
+  margin: 10px;
+}
+
 li:hover {
   background-color: #f1f1f1;
 }
